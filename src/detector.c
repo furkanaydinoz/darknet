@@ -1519,6 +1519,7 @@ void calc_anchors(char *datacfg, int num_of_clusters, int width, int height, int
         printf("\nSaving anchors to the file: anchors.txt \n");
         printf("anchors = ");
         for (i = 0; i < num_of_clusters; ++i) {
+            printf("for loop first line");
             float anchor_w = anchors_data.centers.vals[i][0]; //centers->data.fl[i * 2];
             float anchor_h = anchors_data.centers.vals[i][1]; //centers->data.fl[i * 2 + 1];
             if (width > 32) sprintf(buff, "%3.0f,%3.0f", anchor_w, anchor_h);
@@ -1526,10 +1527,13 @@ void calc_anchors(char *datacfg, int num_of_clusters, int width, int height, int
             printf("%s", buff);
             fwrite(buff, sizeof(char), strlen(buff), fw);
             if (i + 1 < num_of_clusters) {
+                printf("Last if statement");
                 fwrite(", ", sizeof(char), 2, fw);
                 printf(", ");
+                printf("foor loo last line");
             }
         }
+        printf("close anchor.txt ...");
         printf("\n");
         fclose(fw);
     }
